@@ -34,12 +34,12 @@ class Consultation
 
     #[ORM\Column(length: 255)]
     private ?string $malade = null;
+  
+    #[ORM\ManyToOne(inversedBy: 'consultations')]
+    private ?Medecin $medecin = null;
 
     #[ORM\ManyToOne(inversedBy: 'consultations')]
-    private ?medecin $medecin = null;
-
-    #[ORM\ManyToOne(inversedBy: 'consultations')]
-    private ?patient $patient = null;
+    private ?Patient $patient = null;
 
     public function getId(): ?int
     {

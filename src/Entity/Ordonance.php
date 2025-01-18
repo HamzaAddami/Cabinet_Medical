@@ -21,10 +21,10 @@ class Ordonance
     private ?string $medicament = null;
 
     #[ORM\ManyToOne(inversedBy: 'ordonances')]
-    private ?medecin $medecin = null;
+    private ?Medecin $medecin = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?consultation $consultation = null;
+    private ?Consultation $consultation = null;
 
     public function getId(): ?int
     {

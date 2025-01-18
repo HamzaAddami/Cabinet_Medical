@@ -18,10 +18,10 @@ class RendezVous
     private ?\DateTimeInterface $dateRV = null;
 
     #[ORM\ManyToOne(inversedBy: 'rendezVouses')]
-    private ?secretaire $secretaire = null;
+    private ?Secretaire $secretaire = null;
 
     #[ORM\ManyToOne(inversedBy: 'rendezVouses')]
-    private ?patient $patient = null;
+    private ?Patient $patient = null;
 
     public function getId(): ?int
     {
