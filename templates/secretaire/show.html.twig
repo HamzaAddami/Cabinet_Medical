@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Secretaire{% endblock %}
+
+{% block body %}
+    <h1>Secretaire</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ secretaire.id }}</td>
+            </tr>
+            <tr>
+                <th>NomSec</th>
+                <td>{{ secretaire.nomSec }}</td>
+            </tr>
+            <tr>
+                <th>PrenomSec</th>
+                <td>{{ secretaire.prenomSec }}</td>
+            </tr>
+            <tr>
+                <th>NumTel</th>
+                <td>{{ secretaire.numTel }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ secretaire.adresse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_secretaire_index') }}">back to list</a>
+
+    <a href="{{ path('app_secretaire_edit', {'id': secretaire.id}) }}">edit</a>
+
+    {{ include('secretaire/_delete_form.html.twig') }}
+{% endblock %}
