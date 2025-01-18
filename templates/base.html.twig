@@ -16,7 +16,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ path('app_home') }}">Symfony 6</a>
+                <a class="navbar-brand" href="{{ path('app_home') }}">Cabinet Medical</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -29,8 +29,17 @@
                             <a class="nav-link" href="{{ path('app_patient_index') }}">Patient</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_secretaire_index') }}">Secretaire</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_medecin_index') }}">Medecin</a>
                         </li> 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_rendez_vous_index') }}">Rendez-Vous</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_consultation_index') }}">Consultation</a>
+                        </li>
                     </ul>
                 </div>
             </div>

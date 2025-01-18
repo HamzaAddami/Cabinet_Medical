@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/rendez/vous')]
+#[Route('/rendezvous')]
 final class RendezVousController extends AbstractController
 {
     #[Route(name: 'app_rendez_vous_index', methods: ['GET'])]

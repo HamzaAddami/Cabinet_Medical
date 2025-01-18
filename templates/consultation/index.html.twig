@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-
-<title>Consultation index</title>
+{% extends 'base.html.twig' %}
+   
+{% block title %}Consultation{% endblock %}
 
 {% block body %}
     <h1>Consultation index</h1>
 
-    <table class="table">
+    <table class="table table-striped container">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>DateCons</th>
                 <th>Poid</th>
                 <th>Taille</th>
-                <th>Prix</th>
+                <th>Prix(MAD)</th>
                 <th>EtatPatient</th>
                 <th>Hta</th>
                 <th>Malade</th>
@@ -42,6 +42,7 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_consultation_new') }}">Create new</a>
+    <div class="container">
+        <a class="btn btn-primary" href="{{ path('app_consultation_new') }}">Create new</a>
+    </div>
 {% endblock %}

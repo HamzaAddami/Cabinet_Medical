@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-
-<title>Patient index</title>
+{% extends 'base.html.twig' %}
+   
+{% block title %}Patient {% endblock %}
 
 {% block body %}
     <h1>Patient index</h1>
 
-    <table class="table">
+    <table class="table table-striped container">
         <thead>
             <tr>
                 <th>Id</th>
@@ -42,6 +42,7 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_patient_new') }}">Create new</a>
+    <div class="container">
+        <a class="btn btn-primary" href="{{ path('app_patient_new') }}">Create new</a>
+    </div>
 {% endblock %}

@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-
-<title>RendezVous</title>
+{% extends 'base.html.twig' %}
+   
+{% block title %}RendezVous{% endblock %}
 
 {% block body %}
     <h1>RendezVous</h1>
 
-    <table class="table">
+    <table class="table container">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -15,6 +15,27 @@
                 <th>DateRV</th>
                 <td>{{ rendez_vou.dateRV ? rendez_vou.dateRV|date('Y-m-d') : '' }}</td>
             </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{rendez_vou.patient.nomPatient}}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{rendez_vou.patient.prenomPatient}}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{rendez_vou.patient.adresse}}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{rendez_vou.patient.numTel}}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{rendez_vou.patient.sexe}}</td>
+            </tr>
+
         </tbody>
     </table>
 

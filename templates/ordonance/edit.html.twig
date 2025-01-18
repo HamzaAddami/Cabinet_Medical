@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-
-<title>Edit Ordonance</title>
+{% extends 'base.html.twig' %}
+   
+{% block title %}Edit Ordonnance {% endblock %}
 
 {% block body %}
-    <h1>Edit Ordonance</h1>
+    <h1>Edit Ordonnance</h1>
 
     {{ include('ordonance/_form.html.twig', {'button_label': 'Update'}) }}
 
