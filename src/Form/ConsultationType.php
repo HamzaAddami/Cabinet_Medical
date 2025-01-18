@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Consultation;
 use App\Entity\medecin;
+use App\Entity\patient;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,6 +26,10 @@ class ConsultationType extends AbstractType
             ->add('malade')
             ->add('medecin', EntityType::class, [
                 'class' => medecin::class,
+                'choice_label' => 'id',
+            ])
+            ->add('patient', EntityType::class, [
+                'class' => patient::class,
                 'choice_label' => 'id',
             ])
         ;
