@@ -26,7 +26,7 @@ class AppFixtures extends Fixture
         $consultations = [];
 
         // Création de 10 Patients
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $patient = new Patient();
             $patient->setNomPatient($faker->lastName);
             $patient->setPrenomPatient($faker->firstName);
@@ -50,7 +50,7 @@ class AppFixtures extends Fixture
             $medecin->setNumTel($faker->phoneNumber);
 
             $manager->persist($medecin);
-            $medecins[] = $medecin; // Ajout du médecin au tableau
+            $medecins[] = $medecin; 
         }
 
         // Création de 10 Secrétaires
@@ -62,14 +62,14 @@ class AppFixtures extends Fixture
             $secretaire->setNumTel($faker->phoneNumber);
 
             $manager->persist($secretaire);
-            $secretaires[] = $secretaire; // Ajout du secrétaire au tableau
+            $secretaires[] = $secretaire; 
         }
 
         // Persistez toutes les entités parentes avant de créer les relations
         $manager->flush();
 
         // Création de 10 RendezVous
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             $rdv = new RendezVous();
             $rdv->setDateRV($faker->dateTimeBetween('now', '+1 year'));
             $rdv->setPatient($faker->randomElement($patients)); // Associer un patient aléatoire
@@ -79,29 +79,29 @@ class AppFixtures extends Fixture
         }
 
         // Création de 10 Consultations
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 40; $i++) {
             $consultation = new Consultation();
             $consultation->setDateCons($faker->dateTimeBetween('now', '+1 year'));
-            $consultation->setPatient($faker->randomElement($patients)); // Associer un patient aléatoire
-            $consultation->setMedecin($faker->randomElement($medecins)); // Associer un médecin aléatoire
-            $consultation->setPoid($faker->randomFloat(2, 40, 120)); // Poids aléatoire
-            $consultation->setTaille($faker->randomFloat(2, 1.2, 2.2)); // Taille aléatoire
-            $consultation->setPrix($faker->randomFloat(2, 20, 100)); // Prix aléatoire
-            $consultation->setEtatPatient($faker->sentence); // État du patient aléatoire
-            $consultation->setHta($faker->sentence); // HTA aléatoire
-            $consultation->setMalade($faker->sentence); // Maladie aléatoire
+            $consultation->setPatient($faker->randomElement($patients));
+            $consultation->setMedecin($faker->randomElement($medecins)); 
+            $consultation->setPoid($faker->randomFloat(2, 40, 120)); 
+            $consultation->setTaille($faker->randomFloat(2, 1.2, 2.2)); 
+            $consultation->setPrix($faker->randomFloat(2, 20, 100));
+            $consultation->setEtatPatient($faker->sentence); 
+            $consultation->setHta($faker->sentence); 
+            $consultation->setMalade($faker->sentence); 
 
             $manager->persist($consultation);
-            $consultations[] = $consultation; // Ajout de la consultation au tableau
+            $consultations[] = $consultation; 
         }
 
         // Création de 10 Ordonances
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             $ordonnance = new Ordonance();
             $ordonnance->setDateOrdo($faker->dateTimeBetween('now', '+1 year'));
-            $ordonnance->setConsultation($consultations[$i]); // Associer une consultation unique
+            $ordonnance->setConsultation($consultations[$i]); 
             $ordonnance->setMedecin($faker->randomElement($medecins));
-            $ordonnance->setMedicament($faker->sentence); // Médicament aléatoire
+            $ordonnance->setMedicament($faker->sentence); 
 
             $manager->persist($ordonnance);
         }

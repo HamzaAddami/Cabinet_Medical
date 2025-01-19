@@ -15,10 +15,16 @@ use Symfony\Component\Routing\Attribute\Route;
 final class OrdonanceController extends AbstractController
 {
     #[Route(name: 'app_ordonance_index', methods: ['GET'])]
-    public function index(OrdonanceRepository $ordonanceRepository): Response
+    public function index(OrdonanceRepository $ordonanceRepository, Request $request): Response
     {
+        $page = $request->query->getInt('page', 1);
+
+        $paginatedOrdonances = $ordonanceRepository->findAllOrdonances($page);
+        
         return $this->render('ordonance/index.html.twig', [
-            'ordonances' => $ordonanceRepository->findAll(),
+            'ordonances' => $paginatedOrdonances,
+            'currentPage' => $page,
+            'totalPages' => ceil($paginatedOrdonances->count() / OrdonanceRepository::ORDONNANCE_PER_PAGE),
         ]);
     }
 

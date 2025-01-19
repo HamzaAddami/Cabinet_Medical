@@ -15,10 +15,16 @@ use Symfony\Component\Routing\Attribute\Route;
 final class ConsultationController extends AbstractController
 {
     #[Route(name: 'app_consultation_index', methods: ['GET'])]
-    public function index(ConsultationRepository $consultationRepository): Response
+    public function index(ConsultationRepository $consultationRepository, Request $request): Response
     {
+        $page = $request->query->getInt('page', 1);
+
+        $paginatedConsultations = $consultationRepository->findAllConsultations($page);
+
         return $this->render('consultation/index.html.twig', [
-            'consultations' => $consultationRepository->findAll(),
+            'consultations' => $paginatedConsultations,
+            'currentPage' => $request->query->getInt('page', 1),
+            'totalPages' => ceil($consultationRepository->count() / ConsultationRepository::CONSULTATIONS_PER_PAGE),
         ]);
     }
 

@@ -15,10 +15,16 @@ use Symfony\Component\Routing\Attribute\Route;
 final class RendezVousController extends AbstractController
 {
     #[Route(name: 'app_rendez_vous_index', methods: ['GET'])]
-    public function index(RendezVousRepository $rendezVousRepository): Response
-    {
+    public function index(RendezVousRepository $rendezVousRepository, Request $request): Response
+    {   
+        $page = $request->query->getInt('page', 1);
+
+        $paginatedRendezVouses = $rendezVousRepository->findAllRendezVouss($page);
+
         return $this->render('rendez_vous/index.html.twig', [
-            'rendez_vouses' => $rendezVousRepository->findAll(),
+            'rendez_vouses' => $paginatedRendezVouses,
+            'currentPage' => $page,
+            'totalPages' => ceil($paginatedRendezVouses->count() / RendezVousRepository::RENDEZVOUS_PER_PAGE),
         ]);
     }
 

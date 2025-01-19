@@ -5,12 +5,15 @@ namespace App\Repository;
 use App\Entity\Consultation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Tools\Pagination\Paginator;    
+
 
 /**
  * @extends ServiceEntityRepository<Consultation>
  */
 class ConsultationRepository extends ServiceEntityRepository
 {
+    public const CONSULTATIONS_PER_PAGE = 5;
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Consultation::class);
@@ -40,4 +43,15 @@ class ConsultationRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findAllConsultations(int $page = 1): Paginator
+    {
+        $query = $this->createQueryBuilder('c')
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->setFirstResult(($page - 1) * self::CONSULTATIONS_PER_PAGE)
+            ->setMaxResults(self::CONSULTATIONS_PER_PAGE);
+
+        return new Paginator($query);
+    }
 }

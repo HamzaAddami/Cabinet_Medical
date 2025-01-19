@@ -15,10 +15,16 @@ use Symfony\Component\Routing\Attribute\Route;
 final class MedecinController extends AbstractController
 {
     #[Route(name: 'app_medecin_index', methods: ['GET'])]
-    public function index(MedecinRepository $medecinRepository): Response
+    public function index(MedecinRepository $medecinRepository, Request $request): Response
     {
+        $page = $request->query->getInt('page', 1);
+
+        $paginatedMedecins = $medecinRepository->findAllMedecins($page);
+
         return $this->render('medecin/index.html.twig', [
-            'medecins' => $medecinRepository->findAll(),
+            'medecins' => $paginatedMedecins,
+            'currentPage' => $page,
+            'totalPages' => ceil($paginatedMedecins->count() / MedecinRepository::MEDECINS_PER_PAGE),
         ]);
     }
 

@@ -5,12 +5,16 @@ namespace App\Repository;
 use App\Entity\Ordonance;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+
 
 /**
  * @extends ServiceEntityRepository<Ordonance>
  */
 class OrdonanceRepository extends ServiceEntityRepository
 {
+    public const ORDONNANCE_PER_PAGE = 8;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Ordonance::class);
@@ -40,4 +44,14 @@ class OrdonanceRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+    public function findAllOrdonances(int $page = 1): Paginator
+    {
+        $query = $this->createQueryBuilder('o')
+            ->orderBy('o.id', 'ASC')
+            ->getQuery()
+            ->setFirstResult(($page - 1) * self::ORDONNANCE_PER_PAGE)
+            ->setMaxResults(self::ORDONNANCE_PER_PAGE);
+
+        return new Paginator($query);
+    }
 }

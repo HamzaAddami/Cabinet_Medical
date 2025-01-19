@@ -5,12 +5,15 @@ namespace App\Repository;
 use App\Entity\Patient;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Tools\Pagination\Paginator;    
 
 /**
  * @extends ServiceEntityRepository<Patient>
  */
 class PatientRepository extends ServiceEntityRepository
 {
+    public const PATIENTS_PER_PAGE = 6;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Patient::class);
@@ -40,4 +43,15 @@ class PatientRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findAllPatients(int $page = 1): Paginator
+    {
+        $query = $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'ASC')
+            ->getQuery()
+            ->setFirstResult(($page - 1) * self::PATIENTS_PER_PAGE)
+            ->setMaxResults(self::PATIENTS_PER_PAGE);
+
+        return new Paginator($query);
+    }
 }

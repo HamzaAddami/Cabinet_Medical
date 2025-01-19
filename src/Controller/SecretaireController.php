@@ -15,10 +15,16 @@ use Symfony\Component\Routing\Attribute\Route;
 final class SecretaireController extends AbstractController
 {
     #[Route(name: 'app_secretaire_index', methods: ['GET'])]
-    public function index(SecretaireRepository $secretaireRepository): Response
+    public function index(SecretaireRepository $secretaireRepository, Request $request): Response
     {
+        $page = $request->query->getInt('page', 1);
+
+        $paginatedSecretaires = $secretaireRepository->findAllSecretaires($page);
+
         return $this->render('secretaire/index.html.twig', [
-            'secretaires' => $secretaireRepository->findAll(),
+            'secretaires' => $paginatedSecretaires,
+            'currentPage' => $page,
+            'totalPages' => ceil($paginatedSecretaires->count() / SecretaireRepository::SECRETARE_PER_PAGE),
         ]);
     }
 
