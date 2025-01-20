@@ -1,4 +1,47 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="card-title mb-0">Informations du Rendez-Vous</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_label(form.dateRV, 'Date du Rendez-Vous', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.dateRV, {'attr': {'class': 'form-control'}}) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.dateRV) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_label(form.secretaire, 'Secrétaire', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.secretaire, {'attr': {'class': 'form-control'}}) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.secretaire) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_label(form.patient, 'Patient', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.patient, {'attr': {'class': 'form-control'}}) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.patient) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <button class="btn btn-primary btn-lg">{{ button_label|default('Enregistrer') }}</button>
+</div>
+
 {{ form_end(form) }}

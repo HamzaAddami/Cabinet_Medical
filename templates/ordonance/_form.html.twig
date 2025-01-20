@@ -1,4 +1,56 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="card-title mb-0">Prescription Information</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_label(form.dateOrdo, 'Prescription Date', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.dateOrdo, {'attr': {'class': 'form-control'}}) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.dateOrdo) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_label(form.medicament, 'Medication', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.medicament, {'attr': {'class': 'form-control'}}) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.medicament) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_label(form.medecin, 'Doctor', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.medecin, {'attr': {'class': 'form-control'}}) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.medecin) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_label(form.consultation, 'Consultation', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.consultation, {'attr': {'class': 'form-control'}}) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.consultation) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <button class="btn btn-primary btn-lg">{{ button_label|default('Save Prescription') }}</button>
+</div>
+
 {{ form_end(form) }}

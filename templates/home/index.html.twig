@@ -1,16 +1,74 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <!-- Hero Section -->
+    <section class="hero-section text-center py-5 bg-light">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Bienvenue sur Gestion Médicale</h1>
+            <p class="lead">Une solution complète pour gérer vos patients, rendez-vous et secrétaires.</p>
+            <a href="{{ path('app_rendez_vous_new') }}" class="btn btn-primary btn-lg">Prendre un Rendez-Vous</a>
+        </div>
+    </section>
 
-<div class="example-wrapper">
-    <h1>Welcome to Symfony 6</h1>
+    <!-- Features Section -->
+    <section class="features-section py-5">
+        <div class="container">
+    <h2 class="text-center mb-5">Nos Fonctionnalités</h2>
+    <div class="row">
+        <!-- Gestion des Patients -->
+        <div class="col-md-4 text-center">
+            <div class="feature-card p-4 border rounded">
+                <img src="https://media.vanguardcommunications.net/photo-VCG-HPI-COVID19-Male-Doc-Male-Pt-2000px.jpg" 
+                     alt="Gestion des Patients" 
+                     class="mb-3 img-fluid rounded" 
+                     style="height: 200px; object-fit: cover;">
+                <h3>Gestion des Patients</h3>
+                <p>Gérez les dossiers de vos patients de manière simple et efficace.</p>
+            </div>
+        </div>
 
-    <p>This is your new homepage. You can edit it in <code>templates/home/index.html.twig</code></p>
+        <!-- Rendez-Vous -->
+        <div class="col-md-4 text-center">
+            <div class="feature-card p-4 border rounded">
+                <img src="https://t4.ftcdn.net/jpg/04/07/50/61/360_F_407506165_ouGvRIceMuDPQTcAT1IPljz2G5fiMfl1.jpg" 
+                     alt="Rendez-Vous" 
+                     class="mb-3 img-fluid rounded" 
+                     style="height: 200px; object-fit: cover;">
+                <h3>Rendez-Vous</h3>
+                <p>Planifiez et suivez les rendez-vous de vos patients en temps réel.</p>
+            </div>
+        </div>
+
+        <!-- Secrétaires -->
+        <div class="col-md-4 text-center">
+            <div class="feature-card p-4 border rounded">
+                <img src="https://www.satisform.com/media/6535/big/secretaire-medicale.jpg" 
+                     alt="Secrétaires" 
+                     class="mb-3 img-fluid rounded" 
+                     style="height: 200px; object-fit: cover;">
+                <h3>Secrétaires</h3>
+                <p>Gérez les informations de vos secrétaires et leurs tâches.</p>
+            </div>
+        </div>
+    </div>
 </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section text-center py-5 bg-primary text-white">
+        <div class="container">
+            <h2 class="mb-4">Prêt à commencer ?</h2>
+            <p class="lead mb-4">Rejoignez-nous dès aujourd'hui et simplifiez la gestion de votre cabinet médical.</p>
+            <a href="" class="btn btn-light btn-lg">S'inscrire</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; {{ "now"|date("Y") }} Gestion Médicale. Tous droits réservés.</p>
+        </div>
+    </footer>
 {% endblock %}
