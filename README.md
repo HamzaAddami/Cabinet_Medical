@@ -4,7 +4,7 @@
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.x-purple)
 ![PHP](https://img.shields.io/badge/PHP-8.x-green)
 
-Une application web moderne développée avec **Symfony 6** pour la gestion des patients, rendez-vous, médecins et secrétaires dans un cabinet médical.
+Une application web moderne développée avec **Symfony 7** pour la gestion des patients, rendez-vous, médecins et secrétaires dans un cabinet médical.
 
 ---
 
