@@ -1,6 +1,6 @@
 # Gestion Médicale
 
-![Symfony](https://img.shields.io/badge/Symfony-6.x-blue)
+![Symfony](https://img.shields.io/badge/Symfony-7.x-blue)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.x-purple)
 ![PHP](https://img.shields.io/badge/PHP-8.x-green)
 
@@ -35,3 +35,13 @@ Une application web moderne développée avec **Symfony 6** pour la gestion des 
    ```bash
    git clone https://github.com/votre-utilisateur/gestion-medicale.git
    cd gestion-medicale
+   
+1. **Installer les dependances** :
+   ```bash
+   composer install
+   php bin/console doctrine:migrations:migrate
+
+3. **Lancer l'application** :
+   ```bash
+   symfony server:start
+   
